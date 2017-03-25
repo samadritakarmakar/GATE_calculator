@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>SCIENTIFIC CALCULATOR</title>
+	<link type="text/css" rel="stylesheet" href="SCIENTIFIC%20CALCULATOR_files/calclayout.css">	 
+	<script type="text/javascript" src="SCIENTIFIC%20CALCULATOR_files/jquery-1.js"></script>
+	<script type="text/javascript" src="SCIENTIFIC%20CALCULATOR_files/oscZenoedited.js"></script>           
+	<script type="text/javascript" src="SCIENTIFIC%20CALCULATOR_files/jquery-ui.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=8">
+	<script type="text/javascript">
+            $(function() {
+    <!--  $("#keyPad").draggable({ -->
+      <!--    start: function() { -->
+      <!--   $(this).css({ height: "auto", width: "463px" }); -->
+   <!--  }, -->
+    <!-- stop: function() { -->
+       <!--  $(this).css({ height: "auto", width: "463px" }); -->
+   <!--  } -->
+  <!--   }); -->
+    
+	$(".calc_min").live('click', function(){
+		$('#mainContentArea').toggle();
+		<!-- $('#keyPad_Help').hide(); -->
+               <!--  $('#keyPad_Helpback').hide();  -->
+				 $(".help_back").hide();
+		$('#keyPad').addClass("reduceWidth");
+		$('#helptopDiv span').addClass("reduceHeader");
+//		$('#calc_min').toggleClass("reduceHeader");
+		$(this).removeClass("calc_min").addClass('calc_max');
+	});
+	$(".calc_max").live('click', function(){
+            $(this).removeClass("calc_max").addClass('calc_min');
+		$('#mainContentArea').toggle();
+		if($("#helpContent").css('display') == 'none'){
+        $('#keyPad_Help').show();
+        }
+        else{
+            $('#keyPad_Helpback').show();
+        }
+		<!-- $('#keyPad_Help').show(); -->
+		$('#keyPad').removeClass("reduceWidth");
+		$('#helptopDiv span').removeClass("reduceHeader");
+	});
+  });
+		$('#closeButton').click(function(){
+			$('#loadCalc').hide();
+		});
+		/** new help changes **/
+		$('#keyPad_Help').live('click',function(){
+			$(this).hide();
+			$('#keyPad_Helpback').show();
+			$('.text_container').hide();
+			$('.left_sec').hide();
+			$('#keyPad_UserInput1').hide();
+			$('#helpContent').show();
+			
+		});
+		
+		$('#keyPad_Helpback').live('click',function(){
+			$(this).hide();
+			$('#keyPad_Help').show();
+			$('.text_container').show();
+			$('.left_sec').show();
+			$('#keyPad_UserInput1').show();
+			$('#helpContent').hide();
+			
+		});
+                  
+		/** new help changes **/
+	</script>
+	<style type="text/css">
+		*.unselectable {
+		   -moz-user-select: -moz-none;
+		   -khtml-user-select: none;
+		   -webkit-user-select: none;
+
+		   /*
+			 Introduced in IE 10.
+			 See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+		   */
+		   -ms-user-select: none;
+		   user-select: none;
+		}
+	</style>
+</head>
+<!--<body class="unselectable" oncontextmenu="return false;" onselect="return false;" ondragstart="return false;" onmousewheel="return false;">-->
+<body>
+	<div id="keyPad" class="ui-widget-content calc_container">
+    <!-- new Help changes -->
+    <div id="helptopDiv">
+	<span>Scientific Calculator</span>
+	<div href="#nogo" id="keyPad_Help" class="help_back"></div>
+	<div style="display:none;" href="#nogo" id="keyPad_Helpback" class="help_back"></div>
+	</div>
+     <!-- new Help changes -->
+     <div class="calc_min" id="calc_min"></div>
+     <!-- <div class="calc_max hide" id="calc_max"></div> -->
+	 <div class="calc_close" id="closeButton"></div>
+	 <!-- main content start here-->
+	 <div id="mainContentArea">
+		<input id="keyPad_UserInput1" class="keyPad_TextBox1" readonly="readonly" type="text">
+		 <div class="text_container">
+			<input value="0" id="keyPad_UserInput" class="keyPad_TextBox" maxlength="30" readonly="readonly" type="text">
+			<span id="memory" class="memoryhide"><font size="2">M</font></span><font size="2"> 
+		</font></div><font size="2">
+		<div class="clear"></div>
+		<div class="left_sec">
+			<div class="calc_row clear">
+				<a href="#nogo" id="keyPad_btnMod" class="keyPad_btnBinaryOp">mod</a>
+				<div class="degree_radian">
+					<input name="degree_or_radian" value="deg" checked="checked" type="radio">Deg
+					<input name="degree_or_radian" value="rad" type="radio">Rad
+				</div>
+				<a href="#nogo" id="keyPad_btnPi" class="keyPad_btnConst" style="visibility:hidden;">π</a>
+				<a href="#nogo" id="keyPad_btnE" class="keyPad_btnConst" style="visibility:hidden;">e</a>
+				<a href="#nogo" id="keyPad_btnE" class="keyPad_btnConst" style="visibility:hidden;">e</a>
+				<a href="#nogo" id="keyPad_MC" class="keyPad_btnMemoryOp">MC</a>
+				<a href="#nogo" id="keyPad_MR" class="keyPad_btnMemoryOp">MR</a>
+				<a href="#nogo" id="keyPad_MS" class="keyPad_btnMemoryOp">MS</a>
+				<a href="#nogo" id="keyPad_M+" class="keyPad_btnMemoryOp">M+</a>
+				<a href="#nogo" id="keyPad_M-" class="keyPad_btnMemoryOp">M-</a>
+                
+			</div>
+			<div class="calc_row clear">
+			    <a href="#nogo" id="keyPad_btnSinH" class="keyPad_btnUnaryOp min">sinh</a>
+				<a href="#nogo" id="keyPad_btnCosinH" class="keyPad_btnUnaryOp min">cosh</a>
+				<a href="#nogo" id="keyPad_btnTgH" class="keyPad_btnUnaryOp min">tanh</a>
+				<a href="#nogo" id="keyPad_EXP" class="keyPad_btnBinaryOp">Exp</a>
+				<a href="#nogo" id="keyPad_btnOpen" class="keyPad_btnBinaryOp ">(</a>
+				<a href="#nogo" id="keyPad_btnClose" class="keyPad_btnBinaryOp ">)</a>
+				<a href="#nogo" id="keyPad_btnBack" class="keyPad_btnCommand calc_arrows">
+					<div style="position: relative; top: -3px">←</div>
+				</a>
+				<a href="#nogo" id="keyPad_btnAllClr" class="keyPad_btnCommand">C</a>
+				<a href="#nogo" id="keyPad_btnInverseSign" class="keyPad_btnUnaryOp">+/-</a>
+				<a href="#nogo" id="keyPad_btnSquareRoot" class="keyPad_btnUnaryOp">
+					<div style="position: relative; top: 1px">√</div>
+				</a>
+			</div>
+			<div class="calc_row clear" style="margin-top: 5px;">
+			<a href="#nogo" id="keyPad_btnAsinH" class="keyPad_btnUnaryOp min "><span class="baseele">sinh</span><span class="superscript">-1</span></a>
+				<a href="#nogo" id="keyPad_btnAcosH" class="keyPad_btnUnaryOp min "><span class="baseele">cosh</span><span class="superscript">-1</span></a>
+				<a href="#nogo" id="keyPad_btnAtanH" class="keyPad_btnUnaryOp min "><span class="baseele">tanh</span><span class="superscript">-1</span></a>
+				<a href="#nogo" id="keyPad_btnLogBase2" class="keyPad_btnUnaryOp"><span class="baseele">log</span><span class="subscript">2</span><span class="baseele">x</span></a>
+				<a href="#nogo" id="keyPad_btnLn" class="keyPad_btnUnaryOp">ln</a>
+				<a href="#nogo" id="keyPad_btnLg" class="keyPad_btnUnaryOp">log</a>			
+				<a href="#nogo" id="keyPad_btn7" class="keyPad_btnNumeric">7</a>
+				<a href="#nogo" id="keyPad_btn8" class="keyPad_btnNumeric">8</a>
+				<a href="#nogo" id="keyPad_btn9" class="keyPad_btnNumeric ">9</a>
+				<a href="#nogo" id="keyPad_btnDiv" class="keyPad_btnBinaryOp">/</a>
+				<a href="#nogo" id="keyPad_%" class="keyPad_btnBinaryOp">%</a>
+			</div>
+			<div class="calc_row clear">
+			<a href="#nogo" id="keyPad_btnPi" class="keyPad_btnConst">π</a>
+				<a href="#nogo" id="keyPad_btnE" class="keyPad_btnConst">e</a>
+				<a href="#nogo" id="keyPad_btnFact" class="keyPad_btnUnaryOp">n!</a>
+				<a href="#nogo" id="keyPad_btnYlogX" class="keyPad_btnBinaryOp "><span class="baseele">log</span><span class="subscript">y</span><span class="baseele">x</span></a>
+				<a href="#nogo" id="keyPad_btnExp" class="keyPad_btnUnaryOp"><span class="baseele">e</span><span class="superscript">x</span></a>
+				<a href="#nogo" id="keyPad_btn10X" class="keyPad_btnUnaryOp"><span class="baseele">10</span><span class="superscript">x</span></a>
+			
+				
+				<a href="#nogo" id="keyPad_btn4" class="keyPad_btnNumeric">4</a>
+				<a href="#nogo" id="keyPad_btn5" class="keyPad_btnNumeric">5</a>
+				<a href="#nogo" id="keyPad_btn6" class="keyPad_btnNumeric ">6</a>
+				<a href="#nogo" id="keyPad_btnMult" class="keyPad_btnBinaryOp"><div style="position: relative; top: 3px; font-size: 20px">*</div></a>
+				<a href="#nogo" id="keyPad_btnInverse" class="keyPad_btnUnaryOp"><span class="baseele">1/x</span></a>
+			</div>
+			<div class="calc_row clear">
+				<a href="#nogo" id="keyPad_btnSin" class="keyPad_btnUnaryOp min ">sin</a>
+				<a href="#nogo" id="keyPad_btnCosin" class="keyPad_btnUnaryOp min">cos</a>
+				<a href="#nogo" id="keyPad_btnTg" class="keyPad_btnUnaryOp min">tan</a>
+				<a href="#nogo" id="keyPad_btnYpowX" class="keyPad_btnBinaryOp"><span class="baseele">x</span><span class="superscript">y</span></a>
+				<a href="#nogo" id="keyPad_btnCube" class="keyPad_btnUnaryOp"><span class="baseele">x</span><span class="superscript">3</span></a>
+				<a href="#nogo" id="keyPad_btnSquare" class="keyPad_btnUnaryOp"><span class="baseele">x</span><span class="superscript">2</span></a>
+				<a href="#nogo" id="keyPad_btn1" class="keyPad_btnNumeric">1</a>
+				<a href="#nogo" id="keyPad_btn2" class="keyPad_btnNumeric">2</a>
+				<a href="#nogo" id="keyPad_btn3" class="keyPad_btnNumeric">3</a>
+				<a href="#nogo" id="keyPad_btnMinus" class="keyPad_btnBinaryOp"><div style="position: relative; top: -1px; font-size: 20px">-</div></a>
+			</div>
+			<div class="calc_row clear">
+				<a href="#nogo" id="keyPad_btnAsin" class="keyPad_btnUnaryOp min"><span class="baseele">sin</span><span class="superscript">-1</span></a>
+				<a href="#nogo" id="keyPad_btnAcos" class="keyPad_btnUnaryOp min"><span class="baseele">cos</span><span class="superscript">-1</span></a>
+				<a href="#nogo" id="keyPad_btnAtan" class="keyPad_btnUnaryOp min"><span class="baseele">tan</span><span class="superscript">-1</span></a>
+				<a href="#nogo" id="keyPad_btnYrootX" class="keyPad_btnBinaryOp"><span class="superscript" style="top: -8px;">y</span><span class="baseele" style="font-size: 1.2em; margin: -6px 0 0 -9px;">√x</span></a>
+				<a href="#nogo" id="keyPad_btnCubeRoot" class="keyPad_btnUnaryOp"><font size="3">∛ </font></a>
+				<a href="#nogo" id="keyPad_btnAbs" class="keyPad_btnUnaryOp"><span class="baseele">|x|</span></a>
+				<a href="#nogo" id="keyPad_btn0" class="keyPad_btnNumeric">0</a>
+				<a href="#nogo" id="keyPad_btnDot" class="keyPad_btnNumeric ">.</a>
+				<a href="#nogo" id="keyPad_btnPlus" class="keyPad_btnBinaryOp">+</a>
+				<a href="#nogo" id="keyPad_btnEnter" class="keyPad_btnCommand "><div style="margin-bottom: 2px;">=</div></a>
+			</div>
+		</div>
+		<div class="clear"></div>
+         <!-- new Help changes -->
+       	<div id="helpContent" onmousedown="return false" style="display:none;">
+		  <h3 style="text-align:center;"><strong>Calculator Instructions</strong></h3>
+		  Allows you to perform basic and complex mathematical operations such
+ as modulus, square root, cube root, trigonometric, exponential, 
+logarithmic, hyperbolic functions, etc. 
+		  <br> You can operate the calculator using the buttons provided on screen with your mouse. <br>
+		  <br>
+		 <h3 style=" text-decoration: underline;color: green">Do's:</h3>
+		 <ul>
+		<li> Be sure to press [C] when beginning a new calculation.</li>	
+		<li> Simply an equation using parenthesis and other mathematical operators.</li>
+		<li> Use the predefined operations such as p (Pi), log, Exp to save time during calculation.</li>
+		<li> Use memory function for calculating cumulative totals.</li>
+		<strong>
+		[M+]: Will add displayed value to memory.
+		<br>
+		[MR]: Will recall the value stored in memory.
+		<br>
+		[M-]: Subtracts the displayed value from memory.
+		</strong>
+		<li> Be sure select the angle unit (Deg or Rad) before beginning any calculation.</li>
+		<strong>Note: By default angle unit is set as Degree</strong> 
+	</ul>
+ 	<h3><span style=" text-decoration: underline;color: red">Dont's:</span></h3>
+		<ul>
+		<li> Perform multiple operations together.</li>
+		<li> Leave parenthesis unbalanced.</li>
+		<li> Change the angle unit (Deg or Rad) while performing a calculation..</li>
+		</ul>
+ 	<h3><span style=" text-decoration: underline;">Limitations:</span></h3>
+	<ul>
+	<li> Keyboard operation is disabled.</li>
+	<li> The output for a Factorial calculation is precise up to 14 digits.</li>
+	<li> The output for Logarithmic and Hyperbolic calculations is precise up to 5 digits.</li>
+	<li> Modulus (mod) operation performed on decimal numbers with 15 digits would not be precise.</li>
+	<br>
+	<strong> Use mod operation only if the number comprises of less than 15
+ digits i.e. mod operation provides best results for smaller numbers.</strong>
+	<br>
+	<li>The range of value supported by the calculator is 10(-323) to 10(308).</li>
+	</ul>
+	<br>
+	<br>
+</div>
+         <!-- new Help changes -->
+		 <!-- main content end here-->
+	</font></div><font size="2">
+	</font></div><font size="2">
+    
+    
+
+</font></body></html>
