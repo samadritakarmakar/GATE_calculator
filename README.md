@@ -48,7 +48,7 @@ Open CMakeLists.txt in 'GATE_calculator' folder, and make sure there are lines a
 #Comment out if building on UNIX
     set(CMAKE_CXX_FLAGS "-O2 -mwindows")        ## Optimize
 #Uncomment if building on UNIX
-#    set(CMAKE_CXX_FLAGS "-O2")
+\#    set(CMAKE_CXX_FLAGS "-O2")
 
 add '#' in the start of the line to comment or uncomment.
 
@@ -75,7 +75,7 @@ Open CMakeLists.txt in 'GATE_calculator' folder, and make sure there are lines a
 
 #Comment out if building on UNIX
 
-#    set(CMAKE_CXX_FLAGS "-O2 -mwindows")        ## Optimize
+\#    set(CMAKE_CXX_FLAGS "-O2 -mwindows")        ## Optimize
 
 #Uncomment if building on UNIX
 
