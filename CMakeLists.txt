@@ -1,13 +1,15 @@
 cmake_minimum_required(VERSION 2.8.11)
 
-project(testproject)
+project(prj)
 
 set(CMAKE_BUILD_TYPE Release)
 ## Compiler flags
-#if(CMAKE_COMPILER_IS_GNUCXX)
-    set(CMAKE_CXX_FLAGS "-O2")        ## Optimize
+#Comment out if building on UNIX
+    set(CMAKE_CXX_FLAGS "-O2 -mwindows")        ## Optimize
+#Uncomment if building on UNIX
+#    set(CMAKE_CXX_FLAGS "-O2")
+
     set(CMAKE_EXE_LINKER_FLAGS "-s")  ## Strip binary
-#endif	
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
@@ -23,7 +25,7 @@ find_package(Qt5Widgets REQUIRED)
 add_executable(GATE_calc main.cpp widget.cpp)
 
 # Use the Widgets module from Qt 5.
-target_link_libraries(GATE_calc Qt5::Widgets Qt5WebKitWidgets) 
+target_link_libraries(GATE_calc Qt5::Widgets Qt5WebKitWidgets)
 
 #file(COPY ${YOUR_SRC_IMAGE_DIR}/Calc/* DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Calc/)
 add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/Calc
