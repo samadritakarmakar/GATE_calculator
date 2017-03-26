@@ -91,5 +91,5 @@ type the following commands
 the executable should be ready to use.  
   
   
-#NOTE: Although the program is licensed under GPL, the html file and its dependencies ARE NOT LICENSED UNDER GPL. They are under copyright of IIT and not under purview of GPL.  
+# NOTE: Although the program is licensed under GPL, the html file and its dependencies ARE NOT LICENSED UNDER GPL. They are under copyright of IIT and not under purview of GPL.  
   
