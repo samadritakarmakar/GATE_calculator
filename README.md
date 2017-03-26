@@ -1,7 +1,7 @@
 This is a program built to help students practice on the GATE Virtual Calculator without the hassle of opening up a browser. 
 It is simple to use and tailor made for the IIT provided Virtual Calculator.
 
-
+https://github.com/samadritakarmakar/GATE_calculator/blob/master/GATE_Calc.png
 
 How to Use:
 
