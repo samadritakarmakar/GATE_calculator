@@ -45,10 +45,10 @@ https://wiki.qt.io/MSYS2
   
 Open CMakeLists.txt in 'GATE_calculator' folder, and make sure there are lines as the following:  
   
-#Comment out if building on UNIX  
-    set(CMAKE_CXX_FLAGS "-O2 -mwindows")        ## Optimize  
-#Uncomment if building on UNIX  
-\#    set(CMAKE_CXX_FLAGS "-O2")  
+    #Comment out if building on UNIX  
+        set(CMAKE_CXX_FLAGS "-O2 -mwindows")        ## Optimize  
+    #Uncomment if building on UNIX  
+    #    set(CMAKE_CXX_FLAGS "-O2")  
   
 add '#' in the start of the line to comment or uncomment.  
   
@@ -57,10 +57,10 @@ create folder 'GATE_calculator_build' in the same folder you have 'GATE_calculat
   
 type the following commands  
   
-export CC=/c/msys64/usr/bin/gcc  
-export CXX=/c/msys64/usr/bin/g++  
-cmake ../GATE_calculator  
-make  
+    export CC=/c/msys64/usr/bin/gcc  
+    export CXX=/c/msys64/usr/bin/g++  
+    cmake ../GATE_calculator  
+    make  
 
 msys64 will be replaced by msys32 if you are using 32 bit binaries.  
   
@@ -73,14 +73,10 @@ Download install gcc, qtcreator, cmake and make. Architecture may be 64 or 32 as
   
 Open CMakeLists.txt in 'GATE_calculator' folder, and make sure there are lines as the following:  
   
-#Comment out if building on UNIX  
-  
-\#    set(CMAKE_CXX_FLAGS "-O2 -mwindows")        ## Optimize  
-  
-#Uncomment if building on UNIX  
-  
-set(CMAKE_CXX_FLAGS "-O2")  
-  
+    #Comment out if building on UNIX  
+    #    set(CMAKE_CXX_FLAGS "-O2 -mwindows")        ## Optimize  
+    #Uncomment if building on UNIX  
+    set(CMAKE_CXX_FLAGS "-O2")  
   
 add '#' in the start of the line to comment or uncomment.  
   
@@ -89,8 +85,8 @@ create folder 'GATE_calculator_build' in the same folder you have where 'GATE_ca
   
 type the following commands  
   
-cmake ../GATE_calculator  
-make  
+    cmake ../GATE_calculator  
+    make  
   
 the executable should be ready to use.  
   
