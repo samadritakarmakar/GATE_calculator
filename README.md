@@ -74,9 +74,13 @@ Download install gcc, qtcreator, cmake and make. Architecture may be 64 or 32 as
 Open CMakeLists.txt in 'GATE_calculator' folder, and make sure there are lines as the following:
 
 #Comment out if building on UNIX
+
 #    set(CMAKE_CXX_FLAGS "-O2 -mwindows")        ## Optimize
+
 #Uncomment if building on UNIX
-    set(CMAKE_CXX_FLAGS "-O2")
+
+set(CMAKE_CXX_FLAGS "-O2")
+
 
 add '#' in the start of the line to comment or uncomment.
 
