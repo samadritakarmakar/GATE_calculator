@@ -8,7 +8,7 @@ QT       += core gui  webkitwidgets #webkit
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Browser
+TARGET = GATE_Calc
 TEMPLATE = app
 
 

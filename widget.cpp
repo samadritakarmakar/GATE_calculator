@@ -1,8 +1,6 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include <QTimer>
-#include <QString>
-#include <QDir>
 #include <QDebug>
 
 
@@ -10,20 +8,46 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
+    QString Calc;
     ui->setupUi(this);
     this->setWindowTitle("Scientific Calculator");
     QDir open;
-    if(!open.cd("Calc"))
-        qWarning("Cannot Find Diectory \"Calc\"");
-    open.setCurrent(open.currentPath()+open.fromNativeSeparators("//Calc"));
-    QString Calc="file:"+open.fromNativeSeparators("//")+open.fromNativeSeparators("/")+open.currentPath()+open.fromNativeSeparators("/SCIENTIFIC%20CALCULATOR.html");
-    //QString Calc="file:///home/sam/Programs/build-Browser-Unnamed-Release/Calc/SCIENTIFIC%20CALCULATOR.html";
+    qDebug()<<"Current Directory"<<open.currentPath();
+
+    if(open.cd("Calc"))
+        setCalc(&Calc, &open, 1);
+    else
+    {
+        qWarning("Cannot Find Directory \"Calc\" in Current Directory. Will look in home Directory");
+        open.setCurrent(open.homePath());
+        qDebug()<<"Current Directory"<<open.currentPath();
+        if(open.cd("Calc"))
+            setCalc(&Calc, &open, 1);
+        else
+        {
+            qWarning("Cannot Find Directory \"Calc\" in home directory\nReverting to default website page");
+            setCalc(&Calc, &open, 2);
+            Calc="https://www.tcsion.com/OnlineAssessment/ScientificCalculator/Calculator.html";
+        }
+    }
+    qDebug()<<Calc;
     ui->webView->load(QUrl(Calc));
-    //qDebug()<<Calc;
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
     timer->start(1000);
     showTime();
+}
+
+void Widget::setCalc(QString *point_Calc, QDir *point_open, int option)
+{
+    if (option==1)
+    {
+        point_open->setCurrent(point_open->currentPath()+point_open->fromNativeSeparators("/Calc"));
+        *point_Calc="file:"+point_open->fromNativeSeparators("/")+point_open->fromNativeSeparators("/")+point_open->currentPath()+point_open->fromNativeSeparators("/SCIENTIFIC%20CALCULATOR.html");
+        qDebug()<<"Variable Calc= "<<*point_Calc;
+    }
+    else if(option==2)
+        *point_Calc="https://www.tcsion.com/OnlineAssessment/ScientificCalculator/Calculator.html";
 }
 
 Widget::~Widget()

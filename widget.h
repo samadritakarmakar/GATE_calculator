@@ -2,6 +2,8 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QString>
+#include <QDir>
 
 namespace Ui {
 class Widget;
@@ -18,6 +20,7 @@ public:
 public slots:
     void showTime();
     void on_pushButton_clicked();
+    void setCalc(QString *point_Calc, QDir *point_open, int option);
 private:
     Ui::Widget *ui;
 };
