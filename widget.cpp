@@ -43,7 +43,7 @@ void Widget::setCalc(QString *point_Calc, QDir *point_open, int option)
     if (option==1)
     {
         point_open->setCurrent(point_open->currentPath()+point_open->fromNativeSeparators("/Calc"));
-        *point_Calc="file:"+point_open->fromNativeSeparators("/")+point_open->fromNativeSeparators("/")+point_open->currentPath()+point_open->fromNativeSeparators("/SCIENTIFIC%20CALCULATOR.html");
+        *point_Calc="file:"+point_open->fromNativeSeparators("//")+point_open->fromNativeSeparators("/")+point_open->currentPath()+point_open->fromNativeSeparators("/SCIENTIFIC%20CALCULATOR.html");
         qDebug()<<"Variable Calc= "<<*point_Calc;
     }
     else if(option==2)
